@@ -3,6 +3,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
+
 android {
     compileSdk 32
 
@@ -17,6 +22,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField("String", "NASA_API_KEY", apikeyProperties['NASA_API_KEY'])
     }
 
     buildTypes {
