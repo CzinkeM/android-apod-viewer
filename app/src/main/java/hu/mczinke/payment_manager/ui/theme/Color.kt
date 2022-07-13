@@ -2,7 +2,8 @@ package hu.mczinke.payment_manager.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val SpaceBlack = Color(0xFF19181B)
+val SpaceBlackVariant = Color(0xFF252525)
+val SpacePrimary = Color(0xFF2C5484)
+val SpacePrimaryVariant = Color(0xFF80A7C4)
+val SpaceSecondary = Color(0xFFCDCBDA)
