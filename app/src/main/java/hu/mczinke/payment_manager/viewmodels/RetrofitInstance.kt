@@ -1,7 +1,6 @@
 package hu.mczinke.payment_manager.viewmodels
 
-import hu.mczinke.payment_manager.BuildConfig
-import hu.mczinke.payment_manager.nasa_api.APODApi
+import hu.mczinke.payment_manager.nasa_api.ApodApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,7 +13,7 @@ object RetrofitInstance {
             .build()
     }
 
-    val api: APODApi by lazy {
-        retrofit.create(APODApi::class.java)
+    val api: ApodApi by lazy {
+        retrofit.create(ApodApi::class.java)
     }
 }

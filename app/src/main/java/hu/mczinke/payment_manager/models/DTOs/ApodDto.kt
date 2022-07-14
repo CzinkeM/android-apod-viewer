@@ -1,9 +1,9 @@
-package hu.mczinke.payment_manager.models
+package hu.mczinke.payment_manager.models.DTOs
 
 import com.google.gson.annotations.SerializedName
+import hu.mczinke.payment_manager.models.Apod
 
-
-data class APOD(
+data class ApodDto(
     @SerializedName("copyright")
     val copyright: String?,
     @SerializedName("date")
@@ -21,7 +21,20 @@ data class APOD(
     @SerializedName("url")
     val url: String
 ) {
-    override fun toString(): String {
-        return "$copyright: $title($date)"
+
+    fun toApod(): Apod {
+        val copyright = if (copyright.isNullOrEmpty()) {
+            ""
+        } else {
+            copyright
+        }
+        return Apod(
+            copyright = copyright,
+            date = date,
+            title = title,
+            explanation = explanation,
+            url = url,
+            HDUrl = HDUrl
+        )
     }
 }

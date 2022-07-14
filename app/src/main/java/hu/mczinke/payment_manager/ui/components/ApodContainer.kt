@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skydoves.landscapist.glide.GlideImage
 import hu.mczinke.payment_manager.R
-import hu.mczinke.payment_manager.models.APOD
-import hu.mczinke.payment_manager.ui.preview_parameter_providers.APODParameterProvider
+import hu.mczinke.payment_manager.models.Apod
+import hu.mczinke.payment_manager.ui.preview_parameter_providers.ApodParameterProvider
 import hu.mczinke.payment_manager.ui.preview_parameter_providers.StringParameterProvider
 import hu.mczinke.payment_manager.ui.theme.SpaceBlack
 import hu.mczinke.payment_manager.ui.theme.SpacePrimary
@@ -34,7 +34,7 @@ import hu.mczinke.payment_manager.ui.theme.SpacePrimaryVariant
 
 @Preview
 @Composable
-fun APODContainer(@PreviewParameter(APODParameterProvider::class) apod: APOD) {
+fun APODContainer(@PreviewParameter(ApodParameterProvider::class) apod: Apod) {
     Surface(modifier = Modifier.background(SpaceBlack)) {
         Column(
             modifier = Modifier
@@ -48,7 +48,7 @@ fun APODContainer(@PreviewParameter(APODParameterProvider::class) apod: APOD) {
             APODTitle(apod.title)
             APODAuthor(
                 when (apod.copyright) {
-                    null -> ""
+                    "" -> ""
                     else -> "(${apod.copyright})"
                 }
             )

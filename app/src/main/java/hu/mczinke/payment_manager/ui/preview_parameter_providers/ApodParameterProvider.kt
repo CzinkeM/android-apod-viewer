@@ -1,19 +1,17 @@
 package hu.mczinke.payment_manager.ui.preview_parameter_providers
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import hu.mczinke.payment_manager.models.APOD
+import hu.mczinke.payment_manager.models.Apod
 
-class APODParameterProvider : PreviewParameterProvider<APOD> {
+class ApodParameterProvider : PreviewParameterProvider<Apod> {
     override val values = sequenceOf(
-        APOD(
+        Apod(
             "copyright",
             "date",
             "explanation",
-            "hdURL",
-            "mediaType",
-            "version",
+            "HDUrl",
             "title",
-            "url"
+            "url",
         )
     )
 }
