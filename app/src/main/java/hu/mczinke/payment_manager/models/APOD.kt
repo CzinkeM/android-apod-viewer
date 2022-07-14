@@ -21,7 +21,6 @@ data class APOD(
     @SerializedName("url")
     val url: String
 ) {
-
     override fun toString(): String {
         return "$copyright: $title($date)"
     }
