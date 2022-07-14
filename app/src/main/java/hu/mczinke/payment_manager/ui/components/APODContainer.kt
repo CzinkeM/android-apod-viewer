@@ -52,7 +52,7 @@ fun APODContainer(@PreviewParameter(APODParameterProvider::class) apod: APOD) {
                     else -> "(${apod.copyright})"
                 }
             )
-            ExplanationButton()
+            ExplanationButton(apod.explanation)
         }
     }
 
@@ -88,7 +88,7 @@ fun APODAuthor(@PreviewParameter(StringParameterProvider::class) author: String)
 
 @Preview
 @Composable
-fun ExplanationButton() {
+fun ExplanationButton(@PreviewParameter(StringParameterProvider::class) explanation: String) {
     Button(
         onClick = { },
         shape = RoundedCornerShape(8.dp),

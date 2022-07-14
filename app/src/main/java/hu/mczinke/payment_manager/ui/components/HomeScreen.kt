@@ -1,6 +1,9 @@
 package hu.mczinke.payment_manager.ui.components
 
-import androidx.compose.material.Scaffold
+import androidx.compose.material.DrawerValue
+import androidx.compose.material.ModalDrawer
+import androidx.compose.material.Text
+import androidx.compose.material.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -11,15 +14,19 @@ import hu.mczinke.payment_manager.viewmodels.MainViewModel
 @Composable
 fun HomeScreen(myViewModel: MainViewModel) {
     val apod: APOD by myViewModel.apod.observeAsState(APOD("", "", "", "", "", "", "", ""))
-    ScaffoldWithBottomMenu(apod)
+
+    APODContainer(apod = apod)
 }
 
 @Composable
-fun ScaffoldWithBottomMenu(apod: APOD) {
-    Scaffold(
-        bottomBar = { BottomAppBar() }) {
-        APODContainer(apod = apod)
-    }
+fun ExplanationModalDrawer(explanation: String) {
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
+    ModalDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            Text(text = explanation)
+        }
+    ) {}
 }
 
 
