@@ -9,9 +9,14 @@ import hu.mczinke.payment_manager.ui.components.FavoritesScreen
 import hu.mczinke.payment_manager.ui.components.HomeScreen
 import hu.mczinke.payment_manager.ui.components.SearchScreen
 import hu.mczinke.payment_manager.viewmodels.MainViewModel
+import hu.mczinke.payment_manager.viewmodels.SearchViewModel
 
 @Composable
-fun BottomNavGraph(homeViewModel: MainViewModel, navHostController: NavHostController) {
+fun BottomNavGraph(
+    homeViewModel: MainViewModel,
+    searchViewModel: SearchViewModel,
+    navHostController: NavHostController
+) {
     NavHost(
         navController = navHostController,
         startDestination = BottomBarScreen.Home.route
@@ -20,7 +25,7 @@ fun BottomNavGraph(homeViewModel: MainViewModel, navHostController: NavHostContr
             HomeScreen(myViewModel = homeViewModel)
         }
         composable(route = BottomBarScreen.Search.route) {
-            SearchScreen()
+            SearchScreen(viewModel = searchViewModel)
         }
         composable(route = BottomBarScreen.Favorites.route) {
             FavoritesScreen()

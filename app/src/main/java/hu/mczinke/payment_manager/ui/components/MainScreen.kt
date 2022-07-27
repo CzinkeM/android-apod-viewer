@@ -19,12 +19,18 @@ import androidx.navigation.compose.rememberNavController
 import hu.mczinke.payment_manager.BottomNavGraph
 import hu.mczinke.payment_manager.ui.theme.SpaceBlackVariant
 import hu.mczinke.payment_manager.viewmodels.MainViewModel
+import hu.mczinke.payment_manager.viewmodels.SearchViewModel
 
 @Composable
-fun MainScreen(homeViewModel: MainViewModel) {
+fun MainScreen(homeViewModel: MainViewModel, searchViewModel: SearchViewModel) {
     val navController = rememberNavController()
-    Scaffold(bottomBar = { BottomBar(navController) }) {
-        BottomNavGraph(navHostController = navController, homeViewModel = homeViewModel)
+    Scaffold(
+        bottomBar = { BottomBar(navController) }) {
+        BottomNavGraph(
+            navHostController = navController,
+            homeViewModel = homeViewModel,
+            searchViewModel = searchViewModel
+        )
     }
 }
 

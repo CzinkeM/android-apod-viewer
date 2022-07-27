@@ -6,23 +6,25 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import hu.mczinke.payment_manager.ui.components.MainScreen
 import hu.mczinke.payment_manager.ui.theme.APODViewerTheme
-import hu.mczinke.payment_manager.viewmodels.MainViewModel
-import hu.mczinke.payment_manager.viewmodels.MainViewModelFactory
-import hu.mczinke.payment_manager.viewmodels.Repository
+import hu.mczinke.payment_manager.viewmodels.*
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var mainViewModel: MainViewModel
+    private lateinit var searchViewModel: SearchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.getAPOD()
+        val homeViewModelFactory = MainViewModelFactory(repository)
+        val searchViewModelFactory = SearchViewModelFactory(repository)
+        mainViewModel = ViewModelProvider(this, homeViewModelFactory)[MainViewModel::class.java]
+        searchViewModel =
+            ViewModelProvider(this, searchViewModelFactory)[SearchViewModel::class.java]
+        mainViewModel.getAPOD()
         setContent {
             APODViewerTheme {
-                MainScreen(viewModel)
+                MainScreen(mainViewModel, searchViewModel)
             }
         }
     }
