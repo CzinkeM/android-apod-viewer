@@ -13,7 +13,7 @@ import hu.mczinke.payment_manager.viewmodels.MainViewModel
 
 @Composable
 fun HomeScreen(myViewModel: MainViewModel) {
-    val apod: Apod by myViewModel.apod.observeAsState(Apod("", "", "", "", "", ""))
+    val apod: Apod by myViewModel.apod.observeAsState(Apod.nullApod())
 
     APODContainer(apod = apod)
 }
