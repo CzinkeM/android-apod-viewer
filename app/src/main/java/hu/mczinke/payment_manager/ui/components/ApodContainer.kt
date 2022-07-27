@@ -104,8 +104,7 @@ fun APODImageContainer(@PreviewParameter(StringParameterProvider::class) url: St
     Box(
         modifier = Modifier
             .border(1.dp, SpacePrimary, RoundedCornerShape(8.dp))
-            .fillMaxWidth(fraction = 1f)
-            .fillMaxHeight(fraction = 0.7f),
+            .fillMaxHeight(fraction = 0.6f),
         contentAlignment = Alignment.Center,
     ) {
         APODImage(url = url)
