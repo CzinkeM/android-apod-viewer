@@ -2,7 +2,6 @@ package hu.mczinke.payment_manager.ui.components
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -82,9 +81,6 @@ fun specificDatePickerWidget(disable: Boolean): String {
             .fillMaxWidth()
             .clickable {
                 //todo: Should change on the button click as well
-                Toast
-                    .makeText(context, "hello", Toast.LENGTH_SHORT)
-                    .show()
             },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
