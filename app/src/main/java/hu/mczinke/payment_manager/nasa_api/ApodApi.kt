@@ -18,5 +18,8 @@ interface ApodApi {
     ): List<ApodDto>
 
     @GET("/planetary/apod")
-    suspend fun getApodAtSpecificDate(@Query("date") date: String): ApodDto
+    suspend fun getApodAtSpecificDate(
+        @Query("api_key") apiKey: String,
+        @Query("date") date: String
+    ): ApodDto
 }
