@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,9 +27,7 @@ import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.models.Apod
 import hu.mczinke.nasa_apod_viewer.ui.preview_parameter_providers.ApodParameterProvider
 import hu.mczinke.nasa_apod_viewer.ui.preview_parameter_providers.StringParameterProvider
-import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlack
-import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimary
-import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
+import hu.mczinke.nasa_apod_viewer.ui.theme.*
 
 @Preview
 @Composable
@@ -77,11 +74,10 @@ fun APODTitle(@PreviewParameter(StringParameterProvider::class) title: String) {
 fun APODAuthor(@PreviewParameter(StringParameterProvider::class) author: String) {
     Text(
         text = author,
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = RobotoCondensed,
         fontSize = 16.sp,
         textAlign = TextAlign.Center,
-        fontWeight = FontWeight.W200,
-        fontStyle = FontStyle.Italic,
+        fontWeight = FontWeight.Light,
         color = SpacePrimaryVariant
     )
 }
@@ -92,7 +88,7 @@ fun ExplanationButton(@PreviewParameter(StringParameterProvider::class) explanat
     Button(
         onClick = { },
         shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.buttonColors(backgroundColor = SpacePrimary)
+        colors = ButtonDefaults.buttonColors(backgroundColor = VibrantColor)
     ) {
         Text(text = "Explanation")
     }
@@ -118,9 +114,9 @@ fun APODImage(@PreviewParameter(StringParameterProvider::class) url: String) {
         imageModel = url,
         contentDescription = "Daily APOD Picture",
         contentScale = ContentScale.FillHeight,
-        placeHolder = ImageVector.vectorResource(id = R.drawable.ic_baseline_image_24),
-        error = ImageVector.vectorResource(id = R.drawable.ic_baseline_image_24),
-        previewPlaceholder = R.drawable.ic_baseline_image_24,
+        placeHolder = ImageVector.vectorResource(id = R.drawable.ic_image),
+        error = ImageVector.vectorResource(id = R.drawable.ic_image),
+        previewPlaceholder = R.drawable.ic_image,
         modifier = Modifier.clip(RoundedCornerShape(8.dp))
     )
 }
