@@ -17,7 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import hu.mczinke.nasa_apod_viewer.BottomNavGraph
+import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
+import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
 import hu.mczinke.nasa_apod_viewer.viewmodels.MainViewModel
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
@@ -50,7 +52,8 @@ fun BottomBar(navController: NavHostController) {
         modifier = Modifier
             .border(0.dp, Color.Transparent, RoundedCornerShape(16.dp))
             .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 16.dp)
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(16.dp)),
+        contentColor = DimmedWhite,
     ) {
 
         screens.forEach { screen ->
@@ -84,6 +87,8 @@ fun RowScope.AddItem(
         } == true,
         onClick = {
             navController.navigate(screen.route)
-        }
+        },
+        selectedContentColor = SpacePrimaryVariant,
+        unselectedContentColor = DimmedWhite,
     )
 }

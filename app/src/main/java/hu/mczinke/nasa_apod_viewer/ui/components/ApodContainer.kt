@@ -27,7 +27,10 @@ import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.models.Apod
 import hu.mczinke.nasa_apod_viewer.ui.preview_parameter_providers.ApodParameterProvider
 import hu.mczinke.nasa_apod_viewer.ui.preview_parameter_providers.StringParameterProvider
-import hu.mczinke.nasa_apod_viewer.ui.theme.*
+import hu.mczinke.nasa_apod_viewer.ui.theme.RobotoCondensed
+import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlack
+import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
+import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 
 @Preview
 @Composable
@@ -99,7 +102,7 @@ fun ExplanationButton(@PreviewParameter(StringParameterProvider::class) explanat
 fun APODImageContainer(@PreviewParameter(StringParameterProvider::class) url: String) {
     Box(
         modifier = Modifier
-            .border(1.dp, SpacePrimary, RoundedCornerShape(8.dp))
+            .border(1.dp, SpacePrimaryVariant, RoundedCornerShape(8.dp))
             .fillMaxHeight(fraction = 0.6f),
         contentAlignment = Alignment.Center,
     ) {
