@@ -5,11 +5,11 @@ import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-        primary = SpacePrimary,
+        primary = SpacePrimaryVariant,
         primaryVariant = SpacePrimaryVariant,
-        secondary = SpaceSecondary,
-        surface = SpaceSecondary,
-        background = SpaceBlack
+        secondary = DimmedWhite,
+        surface = SpaceBlackVariant,
+        background = SpaceBlack,
 )
 
 @Composable

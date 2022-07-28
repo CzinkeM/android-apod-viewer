@@ -2,6 +2,6 @@
 <resources>
 
     <style name="Theme.ApodViewer" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/space_primary</item>
+        <item name="android:statusBarColor">@color/space_black_variant</item>
     </style>
 </resources>
