@@ -1,6 +1,7 @@
 package hu.mczinke.nasa_apod_viewer.viewmodels
 
 import hu.mczinke.nasa_apod_viewer.models.DTOs.ApodDto
+import hu.mczinke.nasa_apod_viewer.models.DateFilter
 
 class Repository {
 
@@ -10,13 +11,16 @@ class Repository {
 
     suspend fun getApodsInPeriod(
         apiKey: String,
-        startDate: String,
-        endDate: String
+        dateFilter: DateFilter
     ): List<ApodDto> {
-        return RetrofitInstance.api.getApodsInPeriod(apiKey, startDate, endDate)
+        return RetrofitInstance.api.getApodsInPeriod(
+            apiKey,
+            dateFilter.startDate,
+            dateFilter.endDate!!
+        )
     }
 
-    suspend fun getApodAtSpecificDate(apiKey: String, date: String): ApodDto {
-        return RetrofitInstance.api.getApodAtSpecificDate(apiKey, date)
+    suspend fun getApodAtSpecificDate(apiKey: String, dateFilter: DateFilter): ApodDto {
+        return RetrofitInstance.api.getApodAtSpecificDate(apiKey, dateFilter.startDate)
     }
 }

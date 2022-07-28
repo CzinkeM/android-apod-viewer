@@ -2,6 +2,7 @@ package hu.mczinke.nasa_apod_viewer.ui.components
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,20 +22,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.models.DateFilter
 import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
-import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceSecondary
+import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 import java.util.*
 
 @Composable
 fun SearchScreen(viewModel: SearchViewModel) {
     val apods: List<Apod> by viewModel.apods.observeAsState(listOf(Apod.nullApod()))
+    var selectedDate = DateFilter("0000-00-00")
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        LazyColumn() {
-            item { SearchWidget() }
+        LazyColumn {
+            item { SearchWidget(selectedDate, viewModel) }
             items(items = apods) { apod ->
                 Text(text = apod.title)
             }
@@ -43,16 +46,26 @@ fun SearchScreen(viewModel: SearchViewModel) {
 }
 
 @Composable
-fun SearchWidget() {
+fun SearchWidget(selectedDate: DateFilter, searchViewModel: SearchViewModel) {
     // TODO: Akkor igaz ha van választva dátum
-    var disabledRange: Boolean = false
     var disabledDate: Boolean = false
-    val showButton: Boolean = false
+    var disabledRange: Boolean = false
+    val showButton: Boolean = true
+    val context = LocalContext.current
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable {
+                Toast
+                    .makeText(
+                        context,
+                        selectedDate.startDate + " - " + selectedDate.endDate,
+                        Toast.LENGTH_SHORT
+                    )
+                    .show()
+            },
         backgroundColor = SpaceBlackVariant,
         elevation = 8.dp,
         shape = RoundedCornerShape(16.dp)
@@ -62,19 +75,18 @@ fun SearchWidget() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            specificDatePickerWidget(disabledDate)
+            SpecificDatePickerWidget(selectedDate, disabledDate)
             OrDivider()
-            dateRangePickerWidget(disabledRange)
+            DateRangePickerWidget(selectedDate, disabledRange)
             if (showButton) {
-                SearchButton()
+                SearchButton(selectedDate, searchViewModel)
             }
         }
     }
 }
 
 @Composable
-fun specificDatePickerWidget(disable: Boolean): String {
-    val context = LocalContext.current;
+fun SpecificDatePickerWidget(dateDateFilter: DateFilter, disable: Boolean) {
     val date = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -90,14 +102,13 @@ fun specificDatePickerWidget(disable: Boolean): String {
             color = dimColor(SpacePrimaryVariant, disable)
         )
         date.value = datePicker(buttonModifier = Modifier, buttonEnabled = !disable)
+        dateDateFilter.startDate = date.value
     }
-
-    return date.value
 }
 
 
 @Composable
-fun dateRangePickerWidget(disable: Boolean): Pair<String, String> {
+fun DateRangePickerWidget(dateDateFilter: DateFilter, disable: Boolean) {
     val startDate = remember { mutableStateOf("") }
     val endDate = remember { mutableStateOf("") }
     Column(
@@ -111,6 +122,7 @@ fun dateRangePickerWidget(disable: Boolean): Pair<String, String> {
         Box(modifier = Modifier.fillMaxWidth(0.7f)) {
             startDate.value =
                 datePicker(buttonModifier = Modifier.align(Alignment.CenterStart), !disable)
+            dateDateFilter.startDate = startDate.value
             Divider(
                 color = dimColor(SpacePrimaryVariant, disable),
                 thickness = 1.dp,
@@ -121,10 +133,9 @@ fun dateRangePickerWidget(disable: Boolean): Pair<String, String> {
             )
             endDate.value =
                 datePicker(buttonModifier = Modifier.align(Alignment.CenterEnd), !disable)
+            dateDateFilter.endDate = endDate.value
         }
     }
-
-    return Pair(startDate.value, endDate.value)
 }
 
 @Composable
@@ -185,12 +196,18 @@ fun datePicker(buttonModifier: Modifier, buttonEnabled: Boolean): String {
 }
 
 @Composable
-fun SearchButton() {
+fun SearchButton(dateFilter: DateFilter, searchViewModel: SearchViewModel) {
 
     Button(
         shape = RoundedCornerShape(8.dp),
-        onClick = { /*TODO*/ },
-        colors = ButtonDefaults.buttonColors(backgroundColor = SpaceSecondary)
+        onClick = {
+            if (dateFilter.isPeriod()) {
+                searchViewModel.getApodsInPeriod(dateFilter)
+            } else {
+                searchViewModel.getApodsAtSpecificDate(dateFilter)
+            }
+        },
+        colors = ButtonDefaults.buttonColors(backgroundColor = VibrantColor)
     ) {
         Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
     }
