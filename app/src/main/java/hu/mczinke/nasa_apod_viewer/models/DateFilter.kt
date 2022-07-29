@@ -1,8 +1,8 @@
 package hu.mczinke.nasa_apod_viewer.models
 
-data class DateFilter(var startDate: String, var endDate: String? = null) {
+import java.time.LocalDate
 
-    fun isPeriod(): Boolean {
-        return endDate != null
-    }
-}
+data class DateFilter(
+    var startDate: LocalDate = LocalDate.MIN,
+    var endDate: LocalDate = LocalDate.MAX
+)
