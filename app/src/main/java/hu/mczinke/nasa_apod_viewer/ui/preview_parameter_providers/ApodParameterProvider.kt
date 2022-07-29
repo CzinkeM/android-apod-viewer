@@ -5,13 +5,6 @@ import hu.mczinke.nasa_apod_viewer.models.Apod
 
 class ApodParameterProvider : PreviewParameterProvider<Apod> {
     override val values = sequenceOf(
-        Apod(
-            "copyright",
-            "date",
-            "explanation",
-            "HDUrl",
-            "title",
-            "url",
-        )
+        Apod.dummyApod()
     )
 }
