@@ -11,7 +11,7 @@ data class ApodDto(
     @SerializedName("explanation")
     val explanation: String,
     @SerializedName("hdurl")
-    val HDUrl: String,
+    val HDUrl: String?,
     @SerializedName("media_type")
     val mediaType: String,
     @SerializedName("service_version")
@@ -34,7 +34,11 @@ data class ApodDto(
             title = title,
             explanation = explanation,
             url = url,
-            HDUrl = HDUrl
+            HDUrl = if (!HDUrl.isNullOrBlank()) {
+                HDUrl
+            } else {
+                ""
+            }
         )
     }
 }
