@@ -16,7 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.models.Apod
 import hu.mczinke.nasa_apod_viewer.models.DateFilter
@@ -34,7 +34,7 @@ import java.time.LocalDate
  */
 @Composable
 fun SearchScreen(viewModel: SearchViewModel) {
-    val apods: List<Apod> by viewModel.apods.observeAsState(listOf(Apod.nullApod()))
+    val apods: List<Apod> by viewModel.apods.observeAsState(listOf())
 
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -73,6 +73,7 @@ fun SearchWidget(searchViewModel: SearchViewModel) {
     }
 }
 
+@Preview
 @Composable
 fun dateRangePickerWidget(): DateFilter {
     val startDate = remember { mutableStateOf(LocalDate.now()) }
@@ -106,6 +107,8 @@ fun dateRangePickerWidget(): DateFilter {
                     .weight(1f),
                 minDateBounds = startDate.value
             )
+
+            // todo: Add pick deleter
         }
     }
     return DateFilter(startDate.value, endDate.value)
@@ -130,14 +133,5 @@ fun SearchButton(dateFilter: DateFilter, searchViewModel: SearchViewModel) {
         colors = ButtonDefaults.buttonColors(backgroundColor = VibrantColor)
     ) {
         Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
-    }
-}
-
-fun dimColor(color: Color, disable: Boolean): Color {
-    //make use of default
-    return if (disable) {
-        color.copy(0.6f)
-    } else {
-        color
     }
 }
