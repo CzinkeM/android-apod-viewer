@@ -1,4 +1,4 @@
-package hu.mczinke.nasa_apod_viewer.models.DTOs
+package hu.mczinke.nasa_apod_viewer.models.dtos
 
 import com.google.gson.annotations.SerializedName
 import hu.mczinke.nasa_apod_viewer.models.Apod

@@ -1,6 +1,6 @@
 package hu.mczinke.nasa_apod_viewer.nasa_api
 
-import hu.mczinke.nasa_apod_viewer.models.DTOs.ApodDto
+import hu.mczinke.nasa_apod_viewer.models.dtos.ApodDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

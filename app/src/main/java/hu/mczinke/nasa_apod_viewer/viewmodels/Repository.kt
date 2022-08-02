@@ -1,7 +1,7 @@
 package hu.mczinke.nasa_apod_viewer.viewmodels
 
-import hu.mczinke.nasa_apod_viewer.models.DTOs.ApodDto
 import hu.mczinke.nasa_apod_viewer.models.DateFilter
+import hu.mczinke.nasa_apod_viewer.models.dtos.ApodDto
 import java.time.format.DateTimeFormatter
 import java.util.*
 
