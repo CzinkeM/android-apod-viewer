@@ -20,18 +20,24 @@ import hu.mczinke.nasa_apod_viewer.BottomNavGraph
 import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
+import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
 import hu.mczinke.nasa_apod_viewer.viewmodels.MainViewModel
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
-fun MainScreen(homeViewModel: MainViewModel, searchViewModel: SearchViewModel) {
+fun MainScreen(
+    homeViewModel: MainViewModel,
+    searchViewModel: SearchViewModel,
+    favoritesViewModel: FavoritesViewModel
+) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomBar(navController) }) {
         BottomNavGraph(
             navHostController = navController,
             homeViewModel = homeViewModel,
-            searchViewModel = searchViewModel
+            searchViewModel = searchViewModel,
+            favoritesViewModel = favoritesViewModel,
         )
     }
 }
