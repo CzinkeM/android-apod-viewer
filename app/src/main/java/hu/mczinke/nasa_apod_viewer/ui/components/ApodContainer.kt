@@ -1,7 +1,10 @@
 package hu.mczinke.nasa_apod_viewer.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -9,10 +12,13 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontFamily
@@ -35,7 +41,10 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 @Preview
 @Composable
 fun APODContainer(@PreviewParameter(ApodParameterProvider::class) apod: Apod) {
-    Surface(modifier = Modifier.background(SpaceBlack)) {
+    Surface(
+        modifier = Modifier
+            .background(SpaceBlack)
+    ) {
         Column(
             modifier = Modifier
                 .background(SpaceBlack)
@@ -55,7 +64,6 @@ fun APODContainer(@PreviewParameter(ApodParameterProvider::class) apod: Apod) {
             ExplanationButton(apod.explanation)
         }
     }
-
 }
 
 @Preview
@@ -100,13 +108,49 @@ fun ExplanationButton(@PreviewParameter(StringParameterProvider::class) explanat
 @Preview
 @Composable
 fun APODImageContainer(@PreviewParameter(StringParameterProvider::class) url: String) {
+    val favorite = remember { mutableStateOf(false) }
+    //this should be the vector resource
+    // TODO: make animation
     Box(
         modifier = Modifier
             .border(1.dp, SpacePrimaryVariant, RoundedCornerShape(8.dp))
-            .fillMaxHeight(fraction = 0.6f),
+            .fillMaxHeight(fraction = 0.6f)
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onDoubleTap = {
+                        favorite.value = true
+                    }
+                )
+            },
         contentAlignment = Alignment.Center,
     ) {
         APODImage(url = url)
+        if (favorite.value) {
+            Image(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .fillMaxWidth(0.15f)
+                    .padding(8.dp)
+                    .clickable {
+                        favorite.value = !favorite.value
+                    },
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_favorite_filled),
+                contentDescription = ""
+            )// TODO:  fill
+        } else {
+            Image(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .fillMaxWidth(0.15f)
+                    .padding(8.dp)
+                    .clickable {
+                        favorite.value = !favorite.value
+                    },
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_favorite_outline),
+                contentDescription = ""
+            )// TODO:  fill
+        }
+
     }
 }
 
