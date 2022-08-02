@@ -2,4 +2,5 @@
 <resources>
     <color name="space_black_variant">#FF252525</color>
     <color name="space_primary">#FF80A7C4</color>
+    <color name="space_vibrant">#FFFC852A</color>
 </resources>
