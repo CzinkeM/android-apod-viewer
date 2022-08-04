@@ -95,12 +95,13 @@ fun dateRangePickerWidget(): DateFilter {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
+                .fillMaxHeight(),
+            horizontalArrangement = Arrangement.Center
         ) {
             startDate.value = datePicker(
                 modifier = Modifier
                     .weight(1f),
-                maxDateBounds = endDate.value
+                maxDateBounds = endDate.value,
             )
             endDate.value = datePicker(
                 modifier = Modifier
