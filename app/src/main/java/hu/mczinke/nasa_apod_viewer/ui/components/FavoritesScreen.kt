@@ -4,10 +4,12 @@ import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,20 +28,27 @@ import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
 
 @Composable
 fun FavoritesScreen(viewModel: FavoritesViewModel) {
-    // TODO: load from room db
-    val apods: List<Apod> by viewModel.apods.observeAsState(listOf(Apod.dummyApod()))
+    val apods by viewModel.readAllData.observeAsState(listOf())
 
     LazyColumn {
-        item { FavoritesTitle() }
-        items(items = apods) {
-
+        item { FavoritesTitle(viewModel = viewModel) }
+        items(items = apods) { apod ->
+            Text(text = apod.title)
+            //FavoritesApodCard(apod = apod)
         }
     }
 }
 
 @Composable
-fun FavoritesTitle() {
-    Text(text = "Favorites")
+fun FavoritesTitle(viewModel: FavoritesViewModel) {
+    Column {
+        Text(text = "Favorites")
+        Button(onClick = {
+            Log.d("Database", "get apods")
+            viewModel.getAllFavoriteApods()
+        }) {}
+    }
+
 }
 
 @Preview

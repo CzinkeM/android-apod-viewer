@@ -21,12 +21,12 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
 import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
-import hu.mczinke.nasa_apod_viewer.viewmodels.MainViewModel
+import hu.mczinke.nasa_apod_viewer.viewmodels.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
 fun MainScreen(
-    homeViewModel: MainViewModel,
+    homeViewModel: HomeViewModel,
     searchViewModel: SearchViewModel,
     favoritesViewModel: FavoritesViewModel
 ) {

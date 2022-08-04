@@ -9,12 +9,12 @@ import hu.mczinke.nasa_apod_viewer.ui.components.FavoritesScreen
 import hu.mczinke.nasa_apod_viewer.ui.components.HomeScreen
 import hu.mczinke.nasa_apod_viewer.ui.components.SearchScreen
 import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
-import hu.mczinke.nasa_apod_viewer.viewmodels.MainViewModel
+import hu.mczinke.nasa_apod_viewer.viewmodels.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
 fun BottomNavGraph(
-    homeViewModel: MainViewModel,
+    homeViewModel: HomeViewModel,
     searchViewModel: SearchViewModel,
     favoritesViewModel: FavoritesViewModel,
     navHostController: NavHostController
@@ -24,7 +24,7 @@ fun BottomNavGraph(
         startDestination = BottomBarScreen.Home.route
     ) {
         composable(route = BottomBarScreen.Home.route) {
-            HomeScreen(myViewModel = homeViewModel)
+            HomeScreen(homeViewModel = homeViewModel)
         }
         composable(route = BottomBarScreen.Search.route) {
             SearchScreen(viewModel = searchViewModel)
