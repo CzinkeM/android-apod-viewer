@@ -28,12 +28,15 @@ import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
 
 @Composable
 fun FavoritesScreen(viewModel: FavoritesViewModel) {
-    val apods by viewModel.readAllData.observeAsState(listOf())
+    val mediator by viewModel.mediator.observeAsState()
+    val apods by viewModel.favorites.observeAsState(listOf())
 
     LazyColumn {
         item { FavoritesTitle(viewModel = viewModel) }
         items(items = apods) { apod ->
-            Text(text = apod.title)
+            Text(text = apod.title, Modifier.clickable {
+                viewModel.deleteFavoriteApod(apod)
+            })
             //FavoritesApodCard(apod = apod)
         }
     }
@@ -45,7 +48,6 @@ fun FavoritesTitle(viewModel: FavoritesViewModel) {
         Text(text = "Favorites")
         Button(onClick = {
             Log.d("Database", "get apods")
-            viewModel.getAllFavoriteApods()
         }) {}
     }
 
