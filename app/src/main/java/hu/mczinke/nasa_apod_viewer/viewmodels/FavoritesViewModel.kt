@@ -10,7 +10,8 @@ import hu.mczinke.nasa_apod_viewer.models.entities.ApodEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FavoritesViewModel(application: Application) : AndroidViewModel(application) {
+class FavoritesViewModel(application: Application) : AndroidViewModel(application),
+    DatabaseRelatedViewModel {
 
     private val _favorites: MutableLiveData<List<ApodEntity>> = MutableLiveData()
     val favorites: LiveData<List<ApodEntity>> = _favorites
@@ -23,18 +24,21 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
         mediator.addSource(repository.allApod) { _favorites.value = it }
     }
 
-    fun deleteFavoriteApod(apodEntity: ApodEntity) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteApod(apodEntity)
-            Log.d("Database", "Favorite Apods added: $apodEntity")
-        }
+    override val apodExistInDatabase: LiveData<Boolean>
+        get() = TODO("Not yet implemented")
+
+    override fun isApodExist(apod: Apod) {
+        TODO("Not yet implemented")
     }
 
-    fun addFavoriteApod(apod: Apod) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addApod(apod.toEntity())
-            Log.d("Database", "Favorite Apods added: $apod")
+    override fun addApodToDatabase(apod: Apod) {
+        TODO("Not yet implemented")
+    }
 
+    override fun deleteApodFromDatabase(apod: Apod) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteApod(apod.title)
+            Log.d("Database", "Favorite Apods added: ${apod.title}")
         }
     }
 }

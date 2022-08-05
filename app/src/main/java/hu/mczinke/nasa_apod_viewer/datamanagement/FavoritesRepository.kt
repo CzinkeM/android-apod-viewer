@@ -11,7 +11,15 @@ class FavoritesRepository(private val apodDao: ApodDao) {
         apodDao.addApod(apodEntity)
     }
 
-    suspend fun deleteApod(apodEntity: ApodEntity) {
-        apodDao.removeApod(apodEntity)
+    suspend fun deleteApod(title: String) {
+        apodDao.removeApodByTitle(title)
+    }
+
+    suspend fun deleteApodByTitle(title: String) {
+        apodDao.removeApodByTitle(title)
+    }
+
+    fun isApodExistInDatabase(title: String): Boolean {
+        return apodDao.isApodExist(title) != null
     }
 }
