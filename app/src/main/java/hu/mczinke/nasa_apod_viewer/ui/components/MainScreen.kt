@@ -1,12 +1,17 @@
 package hu.mczinke.nasa_apod_viewer.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,15 +35,51 @@ fun MainScreen(
     searchViewModel: SearchViewModel,
     favoritesViewModel: FavoritesViewModel
 ) {
+    val showFloatingActionButton = remember { mutableStateOf(false) }
     val navController = rememberNavController()
+    navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        // react on change
+        // you can check destination.id or destination.label and act based on that
+        if (destination.route == BottomBarScreen.Search.route) {
+            Log.d("navigation", "Destination: ${destination.route}!!!!!")
+        } else {
+            Log.d("navigation", "Destination: ${destination.route}")
+        }
+        showFloatingActionButton.value = destination.route == BottomBarScreen.Search.route
+    }
+
     Scaffold(
-        bottomBar = { BottomBar(navController) }) {
-        BottomNavGraph(
-            navHostController = navController,
-            homeViewModel = homeViewModel,
-            searchViewModel = searchViewModel,
-            favoritesViewModel = favoritesViewModel,
-        )
+        bottomBar = { BottomBar(navController) },
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            //TODO: Make animation here
+            if (showFloatingActionButton.value) {
+                SearchFloatingActionButton(onClickAction = {
+                    Log.d("search", "fab clicked")
+                })
+            }
+        }
+    ) { paddingValues ->
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = paddingValues.calculateBottomPadding())
+        ) {
+
+            BottomNavGraph(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = paddingValues.calculateBottomPadding(), top = 50.dp),
+                navHostController = navController,
+                homeViewModel = homeViewModel,
+                searchViewModel = searchViewModel,
+                favoritesViewModel = favoritesViewModel,
+            )
+        }
+        /*
+
+         */
     }
 }
 
@@ -57,8 +98,8 @@ fun BottomBar(navController: NavHostController) {
         backgroundColor = SpaceBlackVariant,
         modifier = Modifier
             .border(0.dp, Color.Transparent, RoundedCornerShape(16.dp))
-            .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 16.dp)
-            .clip(RoundedCornerShape(16.dp)),
+            .padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 8.dp)
+            .clip(RoundedCornerShape(8.dp)),
         contentColor = DimmedWhite,
     ) {
 
