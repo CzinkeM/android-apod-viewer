@@ -39,9 +39,9 @@ fun SearchScreen(viewModel: SearchViewModel) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         LazyColumn {
-            item { SearchWidget(viewModel) }
+            item { SearchWidget(searchViewModel = viewModel) }
             items(items = apods) { apod ->
-                ApodCard(apod = apod)
+                ApodCard(apod = apod, isDelete = false, viewModel = viewModel)
             }
         }
     }

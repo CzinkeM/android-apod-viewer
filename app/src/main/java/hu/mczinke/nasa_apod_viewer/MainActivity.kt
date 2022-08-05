@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         val favoritesRepository = FavoritesRepository(apodDao)
         val repository = Repository()
         val homeViewModelFactory = MainViewModelFactory(repository, favoritesRepository)
-        val searchViewModelFactory = SearchViewModelFactory(repository)
+        val searchViewModelFactory = SearchViewModelFactory(repository, favoritesRepository)
         //val favoriteViewModelFactory = FavoriteViewModelFactory(favoritesRepository)
         mainViewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
         searchViewModel =
