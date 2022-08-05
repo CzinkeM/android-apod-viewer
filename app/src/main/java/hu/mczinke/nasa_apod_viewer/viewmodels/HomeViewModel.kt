@@ -13,10 +13,13 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val repository: Repository,
     private val favoritesRepository: FavoritesRepository
-) : ViewModel() {
+) : ViewModel(), DatabaseRelatedViewModel {
 
     private val _apod: MutableLiveData<Apod> = MutableLiveData()
     val apod: LiveData<Apod> = _apod
+
+    private val _apodExist: MutableLiveData<Boolean> = MutableLiveData()
+    override val apodExistInDatabase: LiveData<Boolean> = _apodExist
 
     fun getApod() {
         viewModelScope.launch {
@@ -26,11 +29,24 @@ class HomeViewModel(
         }
     }
 
-    fun addApodToFavorites(apod: Apod) {
+    override fun isApodExist(apod: Apod) {
+        _apodExist.value = favoritesRepository.isApodExistInDatabase(apod.title)
+    }
+
+    override fun addApodToDatabase(apod: Apod) {
         viewModelScope.launch {
-            val apodEntity = apod.toEntity()
-            favoritesRepository.addApod(apodEntity)
-            Log.d("Home Action", "$apodEntity added to favorites.")
+            favoritesRepository.addApod(apod.toEntity())
+            //TODO should unifies the logging messages
+            Log.d("Database", "${apod.title} added to favorites.")
         }
+        isApodExist(apod)
+    }
+
+    override fun deleteApodFromDatabase(apod: Apod) {
+        viewModelScope.launch {
+            favoritesRepository.deleteApodByTitle(apod.title)
+            Log.d("Database", "${apod.title} deleted from favorites.")
+        }
+        isApodExist(apod)
     }
 }
