@@ -1,6 +1,7 @@
 package hu.mczinke.nasa_apod_viewer
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,6 +15,7 @@ import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
 fun BottomNavGraph(
+    modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel,
     searchViewModel: SearchViewModel,
     favoritesViewModel: FavoritesViewModel,
@@ -24,7 +26,7 @@ fun BottomNavGraph(
         startDestination = BottomBarScreen.Home.route
     ) {
         composable(route = BottomBarScreen.Home.route) {
-            HomeScreen(homeViewModel = homeViewModel)
+            HomeScreen(viewModel = homeViewModel)
         }
         composable(route = BottomBarScreen.Search.route) {
             SearchScreen(viewModel = searchViewModel)
