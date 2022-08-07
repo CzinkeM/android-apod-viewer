@@ -18,7 +18,12 @@ fun FavoritesScreen(viewModel: FavoritesViewModel) {
     LazyColumn {
         item { FavoritesTitle() }
         items(items = apods) { entity ->
-            ApodCard(apod = entity.toApod(), true, viewModel = viewModel)
+            ApodCard(
+                apod = entity.toApod(),
+                allowAddToFavorite = false,
+                allowDeleteFromFavorite = true,
+                viewModel = viewModel
+            )
         }
     }
 }
