@@ -1,4 +1,4 @@
-package hu.mczinke.payment_manager
+package hu.mczinke.nasa_apod_viewer
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

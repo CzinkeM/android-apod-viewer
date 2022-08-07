@@ -1,4 +1,4 @@
-package hu.mczinke.payment_manager.ui.theme
+package hu.mczinke.nasa_apod_viewer.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
