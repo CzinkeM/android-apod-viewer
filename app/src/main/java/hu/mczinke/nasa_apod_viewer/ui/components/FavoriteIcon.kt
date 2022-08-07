@@ -1,60 +1,65 @@
 package hu.mczinke.nasa_apod_viewer.ui.components
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Icon
+import androidx.compose.material.IconToggleButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
-import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
+import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import hu.mczinke.nasa_apod_viewer.viewmodels.DatabaseRelatedViewModel
 
 @Composable
-fun FavoriteIcon(apod: Apod, viewModel: DatabaseRelatedViewModel, modifier: Modifier = Modifier) {
-    // get from viewModel
-    val isApodFavorite = remember { mutableStateOf(false) }
-
-    if (isApodFavorite.value) {
-        FilledFavoriteIcon(apod = apod, viewModel = viewModel, modifier = modifier)
-    } else {
-        OutlinedFavoriteIcon(apod = apod, viewModel = viewModel, modifier = modifier)
-    }
-
-}
-
-@Composable
-fun FilledFavoriteIcon(
+fun FavoriteIcon(
+    iconScale: Float,
     apod: Apod,
     viewModel: DatabaseRelatedViewModel,
     modifier: Modifier = Modifier
 ) {
-    Image(
-        modifier = modifier
-            .clickable {
+    val isApodFavorite = remember { mutableStateOf(false) }
+
+    IconToggleButton(
+        modifier = modifier,
+        checked = isApodFavorite.value,
+        onCheckedChange = { checked ->
+            if (checked) {
+                isApodFavorite.value = true
+                viewModel.addApodToDatabase(apod)
+            } else {
+                isApodFavorite.value = false
                 viewModel.deleteApodFromDatabase(apod)
-                viewModel.isApodExist(apod)
-            },
-        imageVector = ImageVector.vectorResource(id = R.drawable.ic_favorite_filled),
-        contentDescription = "Filled hearth shaped icon."
+            }
+        }) {
+        if (isApodFavorite.value) {
+            FilledFavoriteIcon(modifier = modifier, iconScale = iconScale)
+        } else {
+            OutlinedFavoriteIcon(modifier = modifier, iconScale = iconScale)
+        }
+    }
+}
+
+@Composable
+fun FilledFavoriteIcon(modifier: Modifier = Modifier, iconScale: Float) {
+    Icon(
+        modifier = modifier.fillMaxSize(iconScale),
+        imageVector = Icons.Filled.Favorite,
+        contentDescription = "Filled hearth shaped icon.",
+        tint = VibrantColor
     )
 }
 
 @Composable
-fun OutlinedFavoriteIcon(
-    apod: Apod,
-    viewModel: DatabaseRelatedViewModel,
-    modifier: Modifier = Modifier
-) {
-    Image(
-        modifier = modifier
-            .clickable {
-                viewModel.addApodToDatabase(apod)
-                viewModel.isApodExist(apod)
-            },
-        imageVector = ImageVector.vectorResource(id = R.drawable.ic_favorite_outline),
-        contentDescription = "Hearth shaped icon."
+fun OutlinedFavoriteIcon(modifier: Modifier = Modifier, iconScale: Float) {
+    Icon(
+        modifier = modifier.fillMaxSize(iconScale),
+        imageVector = Icons.Filled.FavoriteBorder,
+        contentDescription = "Hearth shaped icon.",
+        tint = SpacePrimaryVariant,
     )
 }
