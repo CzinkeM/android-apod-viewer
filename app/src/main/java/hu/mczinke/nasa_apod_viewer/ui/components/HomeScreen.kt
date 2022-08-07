@@ -36,7 +36,7 @@ fun HomeScreen(viewModel: HomeViewModel) {
         ApodAuthor(
             when (apod.copyright) {
                 "" -> ""
-                else -> "(${apod.copyright})"
+                else -> apod.copyright
             }
         )
         ExplanationButton(apod.explanation)
@@ -52,7 +52,9 @@ fun HomeImageContainer(apod: Apod, viewModel: HomeViewModel) {
             .fillMaxHeight(0.7f)
             .fillMaxWidth(),
     ) {
-        ApodImage(
+        ApodBigImageWithFavoriteIcon(
+            apod = apod,
+            viewModel = viewModel,
             modifier = Modifier
                 .align(Alignment.Center)
                 .pointerInput(Unit) {
@@ -62,13 +64,6 @@ fun HomeImageContainer(apod: Apod, viewModel: HomeViewModel) {
                         }
                     )
                 },
-            apod = apod,
-            useHD = true
-        )
-        FavoriteIcon(
-            modifier = Modifier.align(Alignment.BottomEnd),
-            apod = apod,
-            viewModel = viewModel
         )
     }
 }
@@ -101,7 +96,6 @@ fun ApodAuthor(@PreviewParameter(StringParameterProvider::class) author: String)
         color = SpacePrimaryVariant,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp, 4.dp, 8.dp, 8.dp)
     )
 }
 
