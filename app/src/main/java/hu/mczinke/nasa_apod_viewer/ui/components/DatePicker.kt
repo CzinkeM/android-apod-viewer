@@ -3,6 +3,7 @@ package hu.mczinke.nasa_apod_viewer.ui.components
 import android.app.DatePickerDialog
 import android.widget.DatePicker
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
@@ -12,7 +13,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import hu.mczinke.nasa_apod_viewer.R
+import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -31,8 +35,8 @@ fun datePicker(
     val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-M-d", Locale.ENGLISH)
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
-
-    val buttonLabel = remember { mutableStateOf("Select") }
+    val buttonLabelInit = stringResource(id = R.string.select)
+    val buttonLabel = remember { mutableStateOf(buttonLabelInit) }
     val date = remember { mutableStateOf(LocalDate.now()) }
     val dateAsString = remember { mutableStateOf("") }
 
@@ -72,19 +76,37 @@ fun datePicker(
     } else {
         calendar.time.time
     }
+    DatePickerButton(buttonLabel = buttonLabel.value, onClick = {
+        datePickerDialog.show()
+    })
 
     datePickerDialog.datePicker.minDate = minDate
     datePickerDialog.datePicker.maxDate = maxDate // TODO: should change to maxbound
 
-    OutlinedButton(
-        onClick = {
-            datePickerDialog.show()
-        },
-        border = BorderStroke(1.dp, SpacePrimaryVariant),
-        shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.outlinedButtonColors(contentColor = SpacePrimaryVariant)
-    ) {
-        Text(text = buttonLabel.value)
-    }
+
     return date.value
+}
+
+@Composable
+fun DatePickerButton(buttonLabel: String, onClick: () -> Unit) {
+    OutlinedButton(
+        modifier = Modifier.fillMaxWidth(0.7f),
+        onClick = {
+            onClick()
+        },
+        border = if (buttonLabel == stringResource(id = R.string.select)) {
+            BorderStroke(1.dp, SpacePrimaryVariant)
+        } else {
+            BorderStroke(1.dp, DimmedWhite)
+        },
+        shape = RoundedCornerShape(8.dp),
+        colors = if (buttonLabel == stringResource(id = R.string.select)) {
+            ButtonDefaults.outlinedButtonColors(contentColor = SpacePrimaryVariant)
+        } else {
+            ButtonDefaults.outlinedButtonColors(contentColor = DimmedWhite)
+        }
+
+    ) {
+        Text(text = buttonLabel)
+    }
 }
