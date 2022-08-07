@@ -50,13 +50,10 @@ fun MainScreen(
 
     Scaffold(
         bottomBar = { BottomBar(navController) },
-        isFloatingActionButtonDocked = true,
         floatingActionButton = {
             //TODO: Make animation here
             if (showFloatingActionButton.value) {
-                SearchFloatingActionButton(onClickAction = {
-                    Log.d("search", "fab clicked")
-                })
+                SearchFloatingActionButton(viewModel = searchViewModel)
             }
         }
     ) { paddingValues ->
