@@ -19,7 +19,7 @@ interface ApodDao {
     fun allApod(): LiveData<List<ApodEntity>>
 
     @Query("SELECT * FROM favorite_apods WHERE favorite_apods.title LIKE :apodTitle")
-    fun isApodExist(apodTitle: String): LiveData<ApodEntity?>
+    fun getApodByTitle(apodTitle: String): LiveData<List<ApodEntity>>
 
 
 }
