@@ -24,7 +24,8 @@ import hu.mczinke.nasa_apod_viewer.viewmodels.DatabaseRelatedViewModel
 @Composable
 fun ApodCard(
     apod: Apod,
-    isDelete: Boolean,
+    allowAddToFavorite: Boolean,
+    allowDeleteFromFavorite: Boolean,
     viewModel: DatabaseRelatedViewModel,
     modifier: Modifier = Modifier
 ) {
@@ -51,7 +52,24 @@ fun ApodCard(
                 .fillMaxHeight()
                 .padding(8.dp)
         ) {
-            ApodImage(apod = apod, useHD = false, modifier = Modifier.weight(1f))
+            Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .weight(1f)
+            ) {
+                ApodSmallImage(apod = apod)
+                if (allowAddToFavorite) {
+                    FavoriteIcon(
+                        apod = apod,
+                        iconScale = 0.3f,
+                        viewModel = viewModel,
+                        modifier = Modifier.align(
+                            Alignment.BottomStart
+                        )
+                    )
+                }
+            }
+
             Box(
                 modifier = modifier
                     .fillMaxSize()
@@ -62,16 +80,8 @@ fun ApodCard(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.align(Alignment.TopCenter)
                 )
-                if (isDelete) {
+                if (allowDeleteFromFavorite) {
                     DeleteIcon(
-                        apod = apod,
-                        viewModel = viewModel,
-                        modifier = Modifier.align(
-                            Alignment.BottomEnd
-                        )
-                    )
-                } else {
-                    FavoriteIcon(
                         apod = apod,
                         viewModel = viewModel,
                         modifier = Modifier.align(
