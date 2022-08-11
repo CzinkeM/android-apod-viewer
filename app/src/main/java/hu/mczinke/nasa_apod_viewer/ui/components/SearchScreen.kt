@@ -67,6 +67,12 @@ fun SearchScreen(viewModel: SearchViewModel) {
                     astronautProgress
                 },
             )
+            if (isLoading) {
+                Text(
+                    text = "Loading...",
+                    color = DimmedWhite
+                )
+            }
             if (!isLoading) {
                 Text(
                     text = "Nothing to show",
