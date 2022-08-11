@@ -38,4 +38,8 @@ class SearchViewModel(
             _apods.value = listOf(result.toApod())
         }
     }
+
+    fun cleanApodList() {
+        _apods.value = emptyList()
+    }
 }
