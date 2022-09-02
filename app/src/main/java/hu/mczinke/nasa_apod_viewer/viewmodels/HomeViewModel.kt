@@ -17,8 +17,7 @@ class HomeViewModel(
     private val _apod: MutableLiveData<Apod> = MutableLiveData()
     val apod: LiveData<Apod> = _apod
 
-    private val _apodExist: MutableLiveData<Boolean> = MutableLiveData()
-    val apodExistInDatabase: LiveData<Boolean> = _apodExist
+    var apodExistInDatabase = _apod.value?.let { isApodExist(it) }
 
     fun getApod() {
         viewModelScope.launch {

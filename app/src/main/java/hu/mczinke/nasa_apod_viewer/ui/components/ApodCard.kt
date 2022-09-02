@@ -58,16 +58,6 @@ fun ApodCard(
                     .weight(1f)
             ) {
                 ApodSmallImage(apod = apod)
-                if (allowAddToFavorite) {
-                    FavoriteIcon(
-                        apod = apod,
-                        iconScale = 0.3f,
-                        viewModel = viewModel,
-                        modifier = Modifier.align(
-                            Alignment.BottomStart
-                        )
-                    )
-                }
             }
 
             Box(
