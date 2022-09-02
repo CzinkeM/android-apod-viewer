@@ -68,12 +68,11 @@ fun ApodAuthor(@PreviewParameter(StringParameterProvider::class) author: String)
     )
 }
 
-@Preview
 @Composable
-fun ExplanationButton(@PreviewParameter(StringParameterProvider::class) explanation: String) {
-    Box(modifier = Modifier.fillMaxWidth()) {
+fun ExplanationButton(modifier: Modifier = Modifier, explanation: String, onClick: () -> Unit) {
+    Box(modifier = modifier.fillMaxWidth()) {
         Button(
-            onClick = { },
+            onClick = { onClick() },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = VibrantColor),
             modifier = Modifier.align(Alignment.Center),
