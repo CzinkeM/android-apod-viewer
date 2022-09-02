@@ -30,13 +30,13 @@ fun SplashScreen(navController: NavController) {
             0f
         },
         animationSpec = tween(
-            durationMillis = 3000
+            durationMillis = 1000
         )
     )
 
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay((4000))
+        delay((2000))
         navController.popBackStack()
         navController.navigate(BottomBarScreen.Home.route)
     }
