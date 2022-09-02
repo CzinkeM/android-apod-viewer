@@ -1,6 +1,5 @@
 package hu.mczinke.nasa_apod_viewer.ui.components
 
-import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
@@ -36,20 +35,21 @@ fun MainScreen(
     favoritesViewModel: FavoritesViewModel
 ) {
     val showFloatingActionButton = remember { mutableStateOf(false) }
+    val showBottomAppBar = remember { mutableStateOf(false) }
     val navController = rememberNavController()
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
         // react on change
         // you can check destination.id or destination.label and act based on that
-        if (destination.route == BottomBarScreen.Search.route) {
-            Log.d("navigation", "Destination: ${destination.route}!!!!!")
-        } else {
-            Log.d("navigation", "Destination: ${destination.route}")
-        }
+        showBottomAppBar.value = destination.route != BottomBarScreen.Splash.route
         showFloatingActionButton.value = destination.route == BottomBarScreen.Search.route
     }
 
     Scaffold(
-        bottomBar = { BottomBar(navController) },
+        bottomBar = {
+            if (showBottomAppBar.value) {
+                BottomBar(navController)
+            }
+        },
         floatingActionButton = {
             //TODO: Make animation here
             if (showFloatingActionButton.value) {
@@ -101,11 +101,13 @@ fun BottomBar(navController: NavHostController) {
     ) {
 
         screens.forEach { screen ->
-            AddItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
+            if (screen.route != BottomBarScreen.Splash.route) {
+                AddItem(
+                    screen = screen,
+                    currentDestination = currentDestination,
+                    navController = navController
+                )
+            }
         }
     }
 }

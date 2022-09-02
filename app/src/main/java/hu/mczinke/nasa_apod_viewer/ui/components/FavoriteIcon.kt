@@ -10,16 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import hu.mczinke.nasa_apod_viewer.models.Apod
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
-import hu.mczinke.nasa_apod_viewer.viewmodels.DatabaseRelatedViewModel
 
 @Composable
 fun FavoriteIcon(
     iconScale: Float,
-    apod: Apod,
-    viewModel: DatabaseRelatedViewModel,
+    onChecked: (checked: Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val isApodFavorite = remember { mutableStateOf(false) }
@@ -28,13 +25,7 @@ fun FavoriteIcon(
         modifier = modifier,
         checked = isApodFavorite.value,
         onCheckedChange = { checked ->
-            if (checked) {
-                isApodFavorite.value = true
-                viewModel.addApodToDatabase(apod)
-            } else {
-                isApodFavorite.value = false
-                viewModel.deleteApodFromDatabase(apod)
-            }
+            onChecked(checked)
         }) {
         if (isApodFavorite.value) {
             FilledFavoriteIcon(modifier = modifier, iconScale = iconScale)

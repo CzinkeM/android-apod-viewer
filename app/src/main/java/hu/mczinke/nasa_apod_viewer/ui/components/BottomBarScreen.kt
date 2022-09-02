@@ -3,6 +3,7 @@ package hu.mczinke.nasa_apod_viewer.ui.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -27,5 +28,11 @@ sealed class BottomBarScreen(
         route = "search",
         title = "Search",
         icon = Icons.Default.Search
+    )
+
+    object Splash : BottomBarScreen(
+        route = "splash",
+        title = "Splash",
+        icon = Icons.Default.Settings
     )
 }

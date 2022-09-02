@@ -28,7 +28,7 @@ abstract class DatabaseViewModel(application: Application) : AndroidViewModel(ap
     }
 
     override fun isApodExist(apod: Apod): Boolean {
-        return !repository.getApodByTitle(apod.title).value.isNullOrEmpty()
+        return repository.isApodExist(apod.title)
     }
 
     override fun addApodToDatabase(apod: Apod) {
@@ -38,6 +38,7 @@ abstract class DatabaseViewModel(application: Application) : AndroidViewModel(ap
         }
         isApodExist(apod)
     }
+
 
     override fun deleteApodFromDatabase(apod: Apod) {
         viewModelScope.launch {

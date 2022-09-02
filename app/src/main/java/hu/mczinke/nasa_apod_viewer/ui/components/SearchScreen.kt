@@ -3,8 +3,6 @@ package hu.mczinke.nasa_apod_viewer.ui.components
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -69,6 +67,12 @@ fun SearchScreen(viewModel: SearchViewModel) {
                     astronautProgress
                 },
             )
+            if (isLoading) {
+                Text(
+                    text = "Loading...",
+                    color = DimmedWhite
+                )
+            }
             if (!isLoading) {
                 Text(
                     text = "Nothing to show",
@@ -79,20 +83,12 @@ fun SearchScreen(viewModel: SearchViewModel) {
 
     } else {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            LazyColumn {
-                item { }
-                items(items = apods) { apod ->
-                    ApodCard(
-                        apod = apod,
-                        allowDeleteFromFavorite = false,
-                        allowAddToFavorite = true,
-                        viewModel = viewModel
-                    )
-                }
-            }
+            CleanableLazyList(
+                apods = apods,
+                viewModel = viewModel,
+                onClearButtonClicked = { viewModel.cleanApodList() })
         }
     }
-
 }
 
 @Preview
