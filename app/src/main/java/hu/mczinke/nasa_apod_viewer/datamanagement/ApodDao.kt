@@ -21,5 +21,6 @@ interface ApodDao {
     @Query("SELECT * FROM favorite_apods WHERE favorite_apods.title LIKE :apodTitle")
     fun getApodByTitle(apodTitle: String): LiveData<List<ApodEntity>>
 
-
+    @Query("SELECT EXISTS(SELECT * FROM favorite_apods WHERE title == :apodTitle)")
+    fun isApodExist(apodTitle: String): Boolean
 }

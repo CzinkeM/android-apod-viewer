@@ -19,7 +19,7 @@ class FavoritesRepository(private val apodDao: ApodDao) {
         apodDao.removeApodByTitle(title)
     }
 
-    fun getApodByTitle(title: String): LiveData<List<ApodEntity>> {
-        return apodDao.getApodByTitle(title)
+    fun isApodExist(title: String): Boolean {
+        return apodDao.isApodExist(title)
     }
 }
