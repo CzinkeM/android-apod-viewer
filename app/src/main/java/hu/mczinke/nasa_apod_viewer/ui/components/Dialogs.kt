@@ -20,18 +20,18 @@ fun ApodImageDialog(modifier: Modifier = Modifier, apod: Apod, onCancel: () -> U
             Text(text = apod.title)
         },
         text = {
-            Column {
-                ApodBigImage(
-                    modifier = Modifier
-                        .fillMaxSize(1f)
-                        .align(CenterHorizontally),
-                    apod = apod
-                )
-                if(apod.copyright != null) {
-                    ApodAuthor(author = apod.copyright)
-                }
-                ApodExplanation(explanation = apod.explanation)
-            }
+//            Column {
+//                ApodBigImage(
+//                    modifier = Modifier
+//                        .fillMaxSize(1f)
+//                        .align(CenterHorizontally),
+//                    apod = apod
+//                )
+//                if(apod.copyright != null) {
+//                    ApodAuthor(author = apod.copyright)
+//                }
+//                ApodExplanation(explanation = apod.explanation)
+//            }
         },
         buttons = {
             Column(

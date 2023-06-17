@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.ui.Modifier
 import hu.mczinke.nasa_apod_viewer.navigation.NavigationComponent
 import hu.mczinke.nasa_apod_viewer.ui.theme.APODViewerTheme
-import hu.mczinke.nasa_apod_viewer.home.data.ApodRepository
 
 class MainActivity : ComponentActivity() {
 

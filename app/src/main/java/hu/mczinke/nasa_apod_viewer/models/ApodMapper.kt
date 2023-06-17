@@ -12,7 +12,7 @@ object ApodMapper {
             explanation = explanation,
             url = url,
             HDUrl = if (HDUrl.isNullOrBlank()) {
-                ""
+                url
             } else {
                 HDUrl
             },
