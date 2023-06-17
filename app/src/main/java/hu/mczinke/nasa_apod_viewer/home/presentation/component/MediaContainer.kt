@@ -13,9 +13,8 @@ fun MediaContainer(
     apod: Apod?
 ) {
     if(apod == null) {
-        Text(
-            modifier = modifier,
-            text = "Apod is null!"
+        WaitForApodLoadAnimation(
+            modifier = modifier
         )
     }else {
         when(apod.mediaType) {

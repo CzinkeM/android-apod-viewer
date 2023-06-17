@@ -24,10 +24,9 @@ fun ApodBigImage(
         imageModel = apod.HDUrl,
         contentDescription = "Picture titled: ${apod.title}",
         contentScale = ContentScale.FillHeight,
-        placeHolder = ImageVector.vectorResource(id = R.drawable.ic_image),
         error = ImageVector.vectorResource(id = R.drawable.ic_image),
         previewPlaceholder = R.drawable.ic_image,
-        circularReveal = CircularReveal(150),
+        circularReveal = CircularReveal(1000),
         modifier = modifier
             .pointerInput(Unit) {
                 detectTapGestures(
