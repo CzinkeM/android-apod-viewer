@@ -1,14 +1,16 @@
-package hu.mczinke.nasa_apod_viewer.viewmodels
+package hu.mczinke.nasa_apod_viewer.home.data
 
 import hu.mczinke.nasa_apod_viewer.models.DateFilter
 import hu.mczinke.nasa_apod_viewer.models.dtos.ApodDto
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class Repository {
+class ApodRepository(
+    private val api: ApodApi
+) {
     private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-M-d", Locale.ENGLISH)
     suspend fun getApod(apiKey: String): ApodDto {
-        return RetrofitInstance.api.getApod(apiKey)
+        return api.getApod(apiKey)
     }
 
     suspend fun getApodsInPeriod(
@@ -16,7 +18,7 @@ class Repository {
         dateFilter: DateFilter
     ): List<ApodDto> {
 
-        return RetrofitInstance.api.getApodsInPeriod(
+        return api.getApodsInPeriod(
             apiKey,
             dateFilter.startDate.format(dateFormatter),
             dateFilter.endDate.format(dateFormatter)
@@ -24,7 +26,7 @@ class Repository {
     }
 
     suspend fun getApodAtSpecificDate(apiKey: String, dateFilter: DateFilter): ApodDto {
-        return RetrofitInstance.api.getApodAtSpecificDate(
+        return api.getApodAtSpecificDate(
             apiKey,
             dateFilter.startDate.format(dateFormatter)
         )

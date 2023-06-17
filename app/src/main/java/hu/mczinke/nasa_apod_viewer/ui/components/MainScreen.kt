@@ -65,9 +65,6 @@ fun MainScreen(
                 navHostController = navController,
             )
         }
-        /*
-
-         */
     }
 }
 

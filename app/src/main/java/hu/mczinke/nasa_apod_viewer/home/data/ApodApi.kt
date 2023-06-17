@@ -1,4 +1,4 @@
-package hu.mczinke.nasa_apod_viewer.nasa_api
+package hu.mczinke.nasa_apod_viewer.home.data
 
 import hu.mczinke.nasa_apod_viewer.models.dtos.ApodDto
 import retrofit2.http.GET
