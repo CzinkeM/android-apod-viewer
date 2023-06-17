@@ -24,15 +24,9 @@ import hu.mczinke.nasa_apod_viewer.BottomNavGraph
 import hu.mczinke.nasa_apod_viewer.ui.theme.DimmedWhite
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
-import hu.mczinke.nasa_apod_viewer.viewmodels.FavoritesViewModel
-import hu.mczinke.nasa_apod_viewer.viewmodels.HomeViewModel
-import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
 fun MainScreen(
-    homeViewModel: HomeViewModel,
-    searchViewModel: SearchViewModel,
-    favoritesViewModel: FavoritesViewModel
 ) {
     val showFloatingActionButton = remember { mutableStateOf(false) }
     val showBottomAppBar = remember { mutableStateOf(false) }
@@ -53,7 +47,7 @@ fun MainScreen(
         floatingActionButton = {
             //TODO: Make animation here
             if (showFloatingActionButton.value) {
-                SearchFloatingActionButton(viewModel = searchViewModel)
+                SearchFloatingActionButton()
             }
         }
     ) { paddingValues ->
@@ -69,9 +63,6 @@ fun MainScreen(
                     .fillMaxSize()
                     .padding(bottom = paddingValues.calculateBottomPadding(), top = 50.dp),
                 navHostController = navController,
-                homeViewModel = homeViewModel,
-                searchViewModel = searchViewModel,
-                favoritesViewModel = favoritesViewModel,
             )
         }
         /*

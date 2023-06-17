@@ -20,7 +20,11 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 
 @Composable
-fun SearchFloatingActionButton(modifier: Modifier = Modifier, viewModel: SearchViewModel) {
+fun SearchFloatingActionButton(
+    modifier: Modifier = Modifier,
+//    viewModel: SearchViewModel
+) {
+    // TODO:  
     val openDialog = remember { mutableStateOf(false) }
     val enabledSearchButton = remember { mutableStateOf(true) }
     val dateFilter by remember { mutableStateOf(DateFilter()) }
@@ -63,7 +67,8 @@ fun SearchFloatingActionButton(modifier: Modifier = Modifier, viewModel: SearchV
                         modifier = Modifier.align(CenterHorizontally),
                         enabled = enabledSearchButton.value,
                         onClick = {
-                            viewModel.getApodsInPeriod(dateFilter)
+                            // TODO:  
+//                            viewModel.getApodsInPeriod(dateFilter)
                             openDialog.value = false
                         })
                     TextButton(

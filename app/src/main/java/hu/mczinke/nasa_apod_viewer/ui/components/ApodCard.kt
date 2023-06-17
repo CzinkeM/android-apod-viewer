@@ -19,14 +19,12 @@ import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.models.Apod
 import hu.mczinke.nasa_apod_viewer.ui.theme.SpaceBlackVariant
-import hu.mczinke.nasa_apod_viewer.viewmodels.DatabaseRelatedViewModel
 
 @Composable
 fun ApodCard(
     apod: Apod,
     allowAddToFavorite: Boolean,
     allowDeleteFromFavorite: Boolean,
-    viewModel: DatabaseRelatedViewModel,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -38,7 +36,7 @@ fun ApodCard(
             .pointerInput(Unit) {
                 detectTapGestures(
                     onDoubleTap = {
-                        viewModel.addApodToDatabase(apod)
+//                        viewModel.addApodToDatabase(apod)
                     }
                 )
             },
@@ -73,7 +71,6 @@ fun ApodCard(
                 if (allowDeleteFromFavorite) {
                     DeleteIcon(
                         apod = apod,
-                        viewModel = viewModel,
                         modifier = Modifier.align(
                             Alignment.BottomEnd
                         )
@@ -85,11 +82,11 @@ fun ApodCard(
 }
 
 @Composable
-fun DeleteIcon(apod: Apod, viewModel: DatabaseRelatedViewModel, modifier: Modifier = Modifier) {
+fun DeleteIcon(apod: Apod, modifier: Modifier = Modifier) {
     Image(
         modifier = modifier
             .clickable {
-                viewModel.deleteApodFromDatabase(apod)
+//                viewModel.deleteApodFromDatabase(apod)
             },
         imageVector = ImageVector.vectorResource(id = R.drawable.ic_remove),
         contentDescription = "Thrash can image."

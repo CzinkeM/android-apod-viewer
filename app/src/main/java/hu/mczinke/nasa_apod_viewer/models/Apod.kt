@@ -1,6 +1,5 @@
 package hu.mczinke.nasa_apod_viewer.models
 
-import hu.mczinke.nasa_apod_viewer.models.entities.ApodEntity
 
 
 data class Apod(
@@ -13,10 +12,6 @@ data class Apod(
 ) {
     override fun toString(): String {
         return "$copyright: $title($date)"
-    }
-
-    fun toEntity(): ApodEntity {
-        return ApodEntity(0, copyright, date, explanation, HDUrl, title, url)
     }
 
     companion object StaticApods {

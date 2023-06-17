@@ -17,13 +17,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.models.Apod
-import hu.mczinke.nasa_apod_viewer.viewmodels.DatabaseRelatedViewModel
 
 @Composable
 fun CleanableLazyList(
     modifier: Modifier = Modifier,
     apods: List<Apod>,
-    viewModel: DatabaseRelatedViewModel,
     onClearButtonClicked: () -> Unit
 ) {
     Box(
@@ -36,7 +34,6 @@ fun CleanableLazyList(
                     apod = apod,
                     allowDeleteFromFavorite = false,
                     allowAddToFavorite = true,
-                    viewModel = viewModel
                 )
             }
         }

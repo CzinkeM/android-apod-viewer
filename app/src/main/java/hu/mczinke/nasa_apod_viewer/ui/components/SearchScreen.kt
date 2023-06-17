@@ -29,10 +29,14 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import hu.mczinke.nasa_apod_viewer.viewmodels.SearchViewModel
 import java.time.LocalDate
 
+// TODO:
 @Composable
-fun SearchScreen(viewModel: SearchViewModel) {
-    val apods: List<Apod> by viewModel.apods.observeAsState(listOf())
-    val isLoading: Boolean by viewModel.isLoading.observeAsState(false)
+fun SearchScreen(
+//    viewModel: SearchViewModel
+) {
+    // TODO:
+//    val apods: List<Apod> by viewModel.apods.observeAsState(listOf())
+//    val isLoading: Boolean by viewModel.isLoading.observeAsState(false)
 
     val spaceShipComposition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.spaceship))
     val spaceShipProgress by animateLottieCompositionAsState(
@@ -46,49 +50,49 @@ fun SearchScreen(viewModel: SearchViewModel) {
         iterations = LottieConstants.IterateForever
     )
 
-    if (apods.isEmpty() || isLoading) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            LottieAnimation(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(0.4f)
-                    .padding(8.dp),
-                composition = if (isLoading) {
-                    spaceShipComposition
-                } else {
-                    astronautComposition
-                },
-                progress = if (isLoading) {
-                    spaceShipProgress
-                } else {
-                    astronautProgress
-                },
-            )
-            if (isLoading) {
-                Text(
-                    text = "Loading...",
-                    color = DimmedWhite
-                )
-            }
-            if (!isLoading) {
-                Text(
-                    text = "Nothing to show",
-                    color = DimmedWhite
-                )
-            }
-        }
-
-    } else {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CleanableLazyList(
-                apods = apods,
-                viewModel = viewModel,
-                onClearButtonClicked = { viewModel.cleanApodList() })
-        }
-    }
+//    if (apods.isEmpty() || isLoading) {
+//        Column(
+//            horizontalAlignment = Alignment.CenterHorizontally,
+//            verticalArrangement = Arrangement.Center
+//        ) {
+//            LottieAnimation(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .fillMaxHeight(0.4f)
+//                    .padding(8.dp),
+//                composition = if (isLoading) {
+//                    spaceShipComposition
+//                } else {
+//                    astronautComposition
+//                },
+//                progress = if (isLoading) {
+//                    spaceShipProgress
+//                } else {
+//                    astronautProgress
+//                },
+//            )
+//            if (isLoading) {
+//                Text(
+//                    text = "Loading...",
+//                    color = DimmedWhite
+//                )
+//            }
+//            if (!isLoading) {
+//                Text(
+//                    text = "Nothing to show",
+//                    color = DimmedWhite
+//                )
+//            }
+//        }
+//
+//    } else {
+//        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+//            CleanableLazyList(
+//                apods = apods,
+//                viewModel = viewModel,
+//                onClearButtonClicked = { viewModel.cleanApodList() })
+//        }
+//    }
 }
 
 @Preview

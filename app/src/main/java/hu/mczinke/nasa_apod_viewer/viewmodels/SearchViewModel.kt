@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.mczinke.nasa_apod_viewer.BuildConfig
 import hu.mczinke.nasa_apod_viewer.models.Apod
@@ -13,7 +14,7 @@ import kotlinx.coroutines.launch
 class SearchViewModel(
     application: Application,
     private val repository: Repository,
-) : DatabaseViewModel(application) {
+) : ViewModel() {
 
     private val _apods: MutableLiveData<List<Apod>> = MutableLiveData()
     val apods: LiveData<List<Apod>> = _apods

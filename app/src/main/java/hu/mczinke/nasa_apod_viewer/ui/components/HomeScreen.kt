@@ -19,17 +19,19 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.SpacePrimaryVariant
 import hu.mczinke.nasa_apod_viewer.viewmodels.HomeViewModel
 import kotlinx.coroutines.launch
 
-
+// TODO: constructor
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun HomeScreen(viewModel: HomeViewModel) {
+fun HomeScreen(
+
+) {
 
     val bottomSheetScaffoldState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
-    val apod: Apod by viewModel.apod.observeAsState(Apod.nullApod())
+//    val apod: Apod by viewModel.apod.observeAsState(Apod.nullApod())
     val coroutineScope = rememberCoroutineScope()
 
     Column {
-        HomeImageContainer(apod = apod)
+//        HomeImageContainer(apod = apod)
         ActionBar(
             modifier = Modifier.fillMaxWidth(),
             onFavoriteCheckedChanged = { isChecked ->
@@ -49,13 +51,13 @@ fun HomeScreen(viewModel: HomeViewModel) {
                 }
             }
         )
-        ApodTitle(apod.title)
-        ApodAuthor(
-            when (apod.copyright) {
-                "" -> ""
-                else -> apod.copyright
-            }
-        )
+//        ApodTitle(apod.title)
+//        ApodAuthor(
+//            when (apod.copyright) {
+//                "" -> ""
+//                else -> apod.copyright
+//            }
+//        )
         ModalBottomSheetLayout(
             modifier = Modifier
                 .fillMaxWidth()
