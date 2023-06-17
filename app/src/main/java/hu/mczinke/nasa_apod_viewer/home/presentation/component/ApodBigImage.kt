@@ -23,7 +23,7 @@ fun ApodBigImage(
     GlideImage(
         imageModel = apod.HDUrl,
         contentDescription = "Picture titled: ${apod.title}",
-        contentScale = ContentScale.FillHeight,
+        contentScale = ContentScale.FillWidth,
         error = ImageVector.vectorResource(id = R.drawable.ic_image),
         previewPlaceholder = R.drawable.ic_image,
         circularReveal = CircularReveal(1000),

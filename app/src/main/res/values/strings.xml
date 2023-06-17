@@ -2,4 +2,7 @@
     <string name="app_name">APOD Viewer</string>
     <string name="select">select</string>
     <string name="cancel">cancel</string>
+
+
+    <string name="home_video_info">This is a Youtube video, to watch tap or long click on the image.</string>
 </resources>
