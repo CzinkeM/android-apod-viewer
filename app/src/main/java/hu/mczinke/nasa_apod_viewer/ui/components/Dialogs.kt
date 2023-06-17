@@ -27,7 +27,9 @@ fun ApodImageDialog(modifier: Modifier = Modifier, apod: Apod, onCancel: () -> U
                         .align(CenterHorizontally),
                     apod = apod
                 )
-                ApodAuthor(author = apod.copyright)
+                if(apod.copyright != null) {
+                    ApodAuthor(author = apod.copyright)
+                }
                 ApodExplanation(explanation = apod.explanation)
             }
         },

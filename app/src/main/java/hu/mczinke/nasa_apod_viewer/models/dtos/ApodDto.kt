@@ -2,6 +2,7 @@ package hu.mczinke.nasa_apod_viewer.models.dtos
 
 import com.google.gson.annotations.SerializedName
 import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.models.MediaType
 
 data class ApodDto(
     @SerializedName("copyright")
@@ -20,25 +21,4 @@ data class ApodDto(
     val title: String,
     @SerializedName("url")
     val url: String
-) {
-
-    fun toApod(): Apod {
-        val copyright = if (copyright.isNullOrEmpty()) {
-            ""
-        } else {
-            copyright
-        }
-        return Apod(
-            copyright = copyright,
-            date = date,
-            title = title,
-            explanation = explanation,
-            url = url,
-            HDUrl = if (!HDUrl.isNullOrBlank()) {
-                HDUrl
-            } else {
-                ""
-            }
-        )
-    }
-}
+)

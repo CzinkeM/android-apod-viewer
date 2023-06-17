@@ -3,9 +3,10 @@ package hu.mczinke.nasa_apod_viewer.models
 
 
 data class Apod(
-    val copyright: String,
+    val copyright: String?,
     val date: String,
     val explanation: String,
+    val mediaType: MediaType,
     val HDUrl: String,
     val title: String,
     val url: String
@@ -15,9 +16,9 @@ data class Apod(
     }
 
     companion object StaticApods {
-        fun nullApod(): Apod = Apod("", "", "", "", "", "")
+        fun nullApod(): Apod = Apod("", "", "", MediaType.IMAGE,"", "", "")
 
         fun dummyApod(): Apod =
-            Apod("copyright", "2022-07-24", "explanation", "hdUrl", "title", "url")
+            Apod("copyright", "2022-07-24", "explanation", MediaType.IMAGE,"hdUrl", "title", "url")
     }
 }

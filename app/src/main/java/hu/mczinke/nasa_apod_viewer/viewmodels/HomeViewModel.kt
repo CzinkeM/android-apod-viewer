@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.mczinke.nasa_apod_viewer.BuildConfig
 import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.models.ApodMapper.toApod
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
