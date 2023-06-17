@@ -1,7 +1,10 @@
-package hu.mczinke.nasa_apod_viewer.ui.components
+package hu.mczinke.nasa_apod_viewer.home.presentation.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -13,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 
 @Composable
 fun ActionBar(
@@ -33,12 +37,15 @@ fun ActionBar(
                 )
             }
             IconButton(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .background(VibrantColor),
                 onClick = { /*TODO*/ }
             ) {
                 Icon(
-                    imageVector = Icons.Default.ExpandMore,
-                    contentDescription = Icons.Default.ExpandMore.name
+                    imageVector = Icons.Default.Search,
+                    contentDescription = Icons.Default.Search.name
                 )
             }
             IconButton(

@@ -1,6 +1,5 @@
 package hu.mczinke.nasa_apod_viewer.home.presentation.screen
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -9,19 +8,15 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.MediaContainer
-import hu.mczinke.nasa_apod_viewer.ui.components.ActionBar
+import hu.mczinke.nasa_apod_viewer.home.presentation.component.ActionBar
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
-import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 // TODO: constructor
