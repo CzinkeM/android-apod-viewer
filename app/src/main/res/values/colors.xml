@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="space_black_variant">#FF252525</color>
+    <color name="space_dark_black">#FF19181B</color>
     <color name="space_primary">#FF80A7C4</color>
     <color name="space_vibrant">#FFFC852A</color>
+    <color name="dimmed_white">#FFF7F7F7</color>
 </resources>

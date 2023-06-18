@@ -5,10 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import hu.mczinke.nasa_apod_viewer.home.presentation.screen.HomeScreen
-import hu.mczinke.nasa_apod_viewer.ui.components.BottomBarScreen
-import hu.mczinke.nasa_apod_viewer.ui.components.SearchScreen
-import hu.mczinke.nasa_apod_viewer.ui.components.SplashScreen
+import hu.mczinke.nasa_apod_viewer.home.domain.HomeNavigation
+import hu.mczinke.nasa_apod_viewer.home.domain.HomeNavigation.addGraph
 
 @Composable
 fun NavigationComponent(
@@ -19,16 +17,8 @@ fun NavigationComponent(
     NavHost(
         modifier = modifier,
         navController = navHostController,
-        startDestination = BottomBarScreen.Splash.route
+        startDestination = HomeNavigation.route()
     ) {
-        composable(route = BottomBarScreen.Splash.route) {
-            SplashScreen(navController = navHostController)
-        }
-        composable(route = BottomBarScreen.Home.route) {
-            HomeScreen()
-        }
-        composable(route = BottomBarScreen.Search.route) {
-            SearchScreen()
-        }
+        this.addGraph()
     }
 }

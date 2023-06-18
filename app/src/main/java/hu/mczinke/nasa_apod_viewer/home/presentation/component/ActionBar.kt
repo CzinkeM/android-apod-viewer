@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -68,7 +68,7 @@ fun ActionBar(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .background(VibrantColor),
+                    .background(ElectricOrange),
                 onClick = {
                 }
             ) {

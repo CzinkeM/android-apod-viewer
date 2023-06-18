@@ -33,7 +33,7 @@ import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
 import hu.mczinke.nasa_apod_viewer.R
 import hu.mczinke.nasa_apod_viewer.core.domain.Apod
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 
 private const val TAG = "ApodBigVideo"
 @Composable
@@ -87,7 +87,7 @@ private fun VideoPlayArrow(modifier: Modifier = Modifier) {
         modifier = modifier,
         imageVector = Icons.Default.PlayArrow,
         contentDescription = Icons.Default.PlayArrow.name,
-        tint = VibrantColor,
+        tint = ElectricOrange,
     )
 }
 
@@ -101,7 +101,7 @@ private fun VideoApodInfoLabel(modifier: Modifier = Modifier) {
             modifier = Modifier.weight(1f),
             imageVector = Icons.Default.Info, 
             contentDescription = Icons.Default.Info.name,
-            tint = VibrantColor,
+            tint = ElectricOrange,
         )
         Text(
             modifier = Modifier
@@ -110,7 +110,7 @@ private fun VideoApodInfoLabel(modifier: Modifier = Modifier) {
             maxLines = 2,
             softWrap = true,
             overflow = TextOverflow.Ellipsis,
-            color = VibrantColor,
+            color = ElectricOrange,
         )
     }
 }

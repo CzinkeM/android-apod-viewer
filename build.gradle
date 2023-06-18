@@ -8,6 +8,7 @@ buildscript {
         lottie_version = "6.0.0"
         glide_version = "4.13.2"
         landscapist_version = "1.5.3"
+        splashscreen_version = "1.0.1"
     }
     repositories {
         google()

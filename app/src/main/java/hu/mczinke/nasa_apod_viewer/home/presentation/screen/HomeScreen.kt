@@ -15,7 +15,7 @@ import hu.mczinke.nasa_apod_viewer.home.presentation.component.ActionBar
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodTitleCard
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.MediaContainer
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 import org.koin.androidx.compose.koinViewModel
 
 // TODO: constructor
@@ -36,7 +36,7 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .fillMaxHeight(.5f)
                     .padding(16.dp)
-                    .border(2.dp, VibrantColor, RoundedCornerShape(8.dp))
+                    .border(2.dp, ElectricOrange, RoundedCornerShape(8.dp))
                     .background(Color.Black, RoundedCornerShape(8.dp)),
                 apod = apod,
             )
@@ -46,7 +46,7 @@ fun HomeScreen(
                     .fillMaxHeight(.2f)
                     .padding(horizontal = 16.dp)
                     .padding(bottom = 16.dp)
-                    .border(2.dp, VibrantColor, RoundedCornerShape(8.dp)),
+                    .border(2.dp, ElectricOrange, RoundedCornerShape(8.dp)),
                 apod = apod
             )
 
@@ -56,7 +56,7 @@ fun HomeScreen(
                     .fillMaxHeight(.8f)
                     .padding(horizontal = 16.dp)
                     .padding(bottom = 16.dp)
-                    .border(2.dp, VibrantColor, RoundedCornerShape(8.dp)),
+                    .border(2.dp, ElectricOrange, RoundedCornerShape(8.dp)),
                 apod = apod
             )
             ActionBar(
@@ -66,7 +66,7 @@ fun HomeScreen(
                     .padding()
                     .padding(horizontal = 16.dp)
                     .padding(bottom = 16.dp)
-                    .border(2.dp, VibrantColor, RoundedCornerShape(8.dp)),
+                    .border(2.dp, ElectricOrange, RoundedCornerShape(8.dp)),
             )
         }
 

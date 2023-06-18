@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/space_black_variant</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_rocket</item>
+        <item name="postSplashScreenTheme">@style/Theme.ApodViewer</item>
+    </style>
+</resources>

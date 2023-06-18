@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.core.domain.Apod
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 
 @Composable
 fun ApodDescription(
@@ -36,7 +36,7 @@ fun ApodDescription(
             Divider(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
                 thickness = 2.dp,
-                color = VibrantColor
+                color = ElectricOrange
             )
             Text(
                 modifier = Modifier

@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 
 @Composable
 fun SettingsDialogWindow(modifier: Modifier = Modifier, onDismiss: () -> Unit) {
@@ -24,7 +24,7 @@ fun SettingsDialogWindow(modifier: Modifier = Modifier, onDismiss: () -> Unit) {
         Surface(
             modifier = modifier.fillMaxHeight(.9f),
             shape = RoundedCornerShape(8.dp),
-            border = BorderStroke(2.dp, VibrantColor)
+            border = BorderStroke(2.dp, ElectricOrange)
         ) {
             Column(modifier = Modifier
                 .fillMaxSize()
@@ -64,7 +64,7 @@ fun SettingsDialogWindow(modifier: Modifier = Modifier, onDismiss: () -> Unit) {
                         modifier = Modifier.align(Alignment.BottomEnd),
                         onClick = onDismiss,
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = VibrantColor
+                            backgroundColor = ElectricOrange
                         )
                     ) {
                         Text(text = "Back")

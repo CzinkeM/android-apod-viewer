@@ -12,7 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.core.domain.Apod
-import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 
 @Composable
 fun ApodTitleCard(
@@ -26,7 +26,7 @@ fun ApodTitleCard(
             modifier = modifier,
             shape = RoundedCornerShape(8.dp),
             elevation = 0.dp,
-            border = BorderStroke(2.dp, VibrantColor)
+            border = BorderStroke(2.dp, ElectricOrange)
         ) {
             Box(
                 modifier = Modifier
