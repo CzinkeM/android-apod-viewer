@@ -33,16 +33,15 @@ fun ApodDescription(
                 modifier = Modifier.align(CenterHorizontally).padding(16.dp),
                 text = "Explanation"
             )
-            Spacer(modifier = Modifier.height(8.dp))
             Divider(
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
                 thickness = 2.dp,
                 color = VibrantColor
             )
-            Spacer(modifier = Modifier.height(8.dp))
-
             Text(
-                modifier = Modifier.verticalScroll(scrollState).padding(4.dp),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .verticalScroll(scrollState),
                 text = apod.explanation,
                 softWrap = true,
             )

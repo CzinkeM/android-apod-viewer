@@ -16,6 +16,7 @@ import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.MediaContainer
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ActionBar
+import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodTitleCard
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import org.koin.androidx.compose.koinViewModel
 
@@ -38,9 +39,19 @@ fun HomeScreen(
                     .fillMaxHeight(.5f)
                     .padding(16.dp)
                     .border(2.dp, VibrantColor, RoundedCornerShape(8.dp))
-                    .background(Color.Black,RoundedCornerShape(8.dp)),
+                    .background(Color.Black, RoundedCornerShape(8.dp)),
                 apod = apod,
             )
+            ApodTitleCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(.2f)
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 16.dp)
+                    .border(2.dp, VibrantColor, RoundedCornerShape(8.dp)),
+                apod = apod
+            )
+
             ApodDescription(
                 modifier = Modifier
                     .fillMaxWidth()
