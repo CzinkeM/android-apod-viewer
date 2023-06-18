@@ -15,13 +15,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
+import hu.mczinke.nasa_apod_viewer.search.domain.SearchNavigation
 import hu.mczinke.nasa_apod_viewer.ui.theme.ElectricOrange
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ActionBar(
     modifier: Modifier = Modifier,
+    navController: NavController,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val context = LocalContext.current
@@ -70,6 +74,7 @@ fun ActionBar(
                     .fillMaxHeight()
                     .background(ElectricOrange),
                 onClick = {
+                    SearchNavigation.navigate(navController)
                 }
             ) {
                 Icon(

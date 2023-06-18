@@ -3,10 +3,10 @@ package hu.mczinke.nasa_apod_viewer.core.domain
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 
-interface NavigationDestiny {
+interface NavDestination {
     fun route(): String
 
-    fun NavGraphBuilder.addGraph()
+    fun addGraph(navGraphBuilder: NavGraphBuilder, navController: NavController)
 
-    fun NavController.navigate()
+    fun navigate(navController: NavController)
 }

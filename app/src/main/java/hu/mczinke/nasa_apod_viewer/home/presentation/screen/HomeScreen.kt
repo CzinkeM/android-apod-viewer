@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ActionBar
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
@@ -23,6 +24,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
+    navController: NavController,
     viewModel: HomeViewModel = koinViewModel()
 ) {
     val apod by viewModel.apod.collectAsState()
@@ -67,6 +69,7 @@ fun HomeScreen(
                     .padding(horizontal = 16.dp)
                     .padding(bottom = 16.dp)
                     .border(2.dp, ElectricOrange, RoundedCornerShape(8.dp)),
+                navController = navController
             )
         }
 
