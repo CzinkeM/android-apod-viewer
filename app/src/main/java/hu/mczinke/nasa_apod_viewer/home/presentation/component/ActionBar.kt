@@ -11,9 +11,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
@@ -22,11 +20,41 @@ import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 fun ActionBar(
     modifier: Modifier = Modifier,
 ) {
+    var showSettingsDialog by remember {
+        mutableStateOf(false)
+    }
+    if(showSettingsDialog) {
+        SettingsDialogWindow {
+            showSettingsDialog = false
+        }
+    }
+
+
     Card(modifier = modifier) {
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            IconButton(
+                modifier = Modifier.weight(1f),
+                onClick = {
+                    showSettingsDialog = true
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = Icons.Default.Settings.name
+                )
+            }
+            IconButton(
+                modifier = Modifier.weight(1f),
+                onClick = { /*TODO*/ }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = Icons.Default.Share.name
+                )
+            }
             IconButton(
                 modifier = Modifier.weight(1f),
                 onClick = { /*TODO*/ }
@@ -46,15 +74,6 @@ fun ActionBar(
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = Icons.Default.Search.name
-                )
-            }
-            IconButton(
-                modifier = Modifier.weight(1f),
-                onClick = { /*TODO*/ }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = Icons.Default.Share.name
                 )
             }
         }
