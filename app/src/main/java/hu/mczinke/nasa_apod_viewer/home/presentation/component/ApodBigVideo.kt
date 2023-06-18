@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
 import hu.mczinke.nasa_apod_viewer.R
-import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.core.domain.Apod
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 
 private const val TAG = "ApodBigVideo"

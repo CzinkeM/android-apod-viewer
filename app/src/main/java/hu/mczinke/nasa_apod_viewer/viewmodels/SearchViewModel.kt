@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.mczinke.nasa_apod_viewer.BuildConfig
+import hu.mczinke.nasa_apod_viewer.core.domain.Apod
+import hu.mczinke.nasa_apod_viewer.core.domain.ApodMapper.toApod
 import hu.mczinke.nasa_apod_viewer.home.data.ApodRepository
-import hu.mczinke.nasa_apod_viewer.models.Apod
-import hu.mczinke.nasa_apod_viewer.models.ApodMapper.toApod
 import hu.mczinke.nasa_apod_viewer.models.DateFilter
 import kotlinx.coroutines.launch
 

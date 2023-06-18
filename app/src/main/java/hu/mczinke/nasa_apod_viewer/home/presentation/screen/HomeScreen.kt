@@ -11,10 +11,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
-import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
-import hu.mczinke.nasa_apod_viewer.home.presentation.component.MediaContainer
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ActionBar
+import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodDescription
 import hu.mczinke.nasa_apod_viewer.home.presentation.component.ApodTitleCard
+import hu.mczinke.nasa_apod_viewer.home.presentation.component.MediaContainer
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 import org.koin.androidx.compose.koinViewModel
 

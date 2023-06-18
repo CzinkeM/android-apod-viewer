@@ -1,6 +1,5 @@
 package hu.mczinke.nasa_apod_viewer.home.presentation.component
 
-import android.widget.Space
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.core.domain.Apod
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
 
 @Composable

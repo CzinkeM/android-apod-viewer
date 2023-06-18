@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
 import hu.mczinke.nasa_apod_viewer.R
-import hu.mczinke.nasa_apod_viewer.models.Apod
+import hu.mczinke.nasa_apod_viewer.core.domain.Apod
 
 @Composable
 fun ApodBigImage(

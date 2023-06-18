@@ -1,5 +1,6 @@
-package hu.mczinke.nasa_apod_viewer.models
+package hu.mczinke.nasa_apod_viewer.core.domain
 
+import hu.mczinke.nasa_apod_viewer.models.MediaType
 
 
 data class Apod(
