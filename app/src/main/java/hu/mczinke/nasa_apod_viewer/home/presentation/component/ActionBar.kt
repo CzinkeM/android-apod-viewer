@@ -1,25 +1,30 @@
 package hu.mczinke.nasa_apod_viewer.home.presentation.component
 
+import android.app.DownloadManager
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.IconToggleButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import hu.mczinke.nasa_apod_viewer.home.presentation.HomeViewModel
 import hu.mczinke.nasa_apod_viewer.ui.theme.VibrantColor
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ActionBar(
     modifier: Modifier = Modifier,
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
+    val context = LocalContext.current
     var showSettingsDialog by remember {
         mutableStateOf(false)
     }
@@ -28,6 +33,7 @@ fun ActionBar(
             showSettingsDialog = false
         }
     }
+    val apod by viewModel.apod.collectAsState()
 
 
     Card(modifier = modifier) {
@@ -48,16 +54,10 @@ fun ActionBar(
             }
             IconButton(
                 modifier = Modifier.weight(1f),
-                onClick = { /*TODO*/ }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = Icons.Default.Share.name
-                )
-            }
-            IconButton(
-                modifier = Modifier.weight(1f),
-                onClick = { /*TODO*/ }
+                enabled = apod != null,
+                onClick = {
+                    viewModel.downloadImage(context)
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.Download,
@@ -69,7 +69,8 @@ fun ActionBar(
                     .weight(1f)
                     .fillMaxHeight()
                     .background(VibrantColor),
-                onClick = { /*TODO*/ }
+                onClick = {
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.Search,
