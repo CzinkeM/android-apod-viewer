@@ -1,6 +1,7 @@
 package hu.mczinke.nasa_apod_viewer
 
 import android.app.Application
+import hu.mczinke.nasa_apod_viewer.core.di.coreModule
 import hu.mczinke.nasa_apod_viewer.home.di.homeModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -12,6 +13,7 @@ class App: Application() {
         startKoin{
             androidContext(this@App)
             modules (
+                coreModule,
                 homeModule
             )
         }

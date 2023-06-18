@@ -1,6 +1,5 @@
 package hu.mczinke.nasa_apod_viewer.ui.theme
 
-import android.widget.Space
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

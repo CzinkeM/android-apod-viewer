@@ -1,4 +1,4 @@
-package hu.mczinke.nasa_apod_viewer.models
+package hu.mczinke.nasa_apod_viewer.core.data
 
 import java.time.LocalDate
 

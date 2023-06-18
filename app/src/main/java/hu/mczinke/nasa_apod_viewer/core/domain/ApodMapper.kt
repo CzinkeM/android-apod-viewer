@@ -1,7 +1,6 @@
 package hu.mczinke.nasa_apod_viewer.core.domain
 
 import hu.mczinke.nasa_apod_viewer.core.data.ApodDto
-import hu.mczinke.nasa_apod_viewer.models.MediaType
 
 object ApodMapper {
 
